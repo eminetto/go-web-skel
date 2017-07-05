@@ -1,0 +1,303 @@
+FORMAT: 1A
+HOST: http://app.golang.dev/v1
+
+# API Web App Skel
+
+API da Code:Nation
+
+# Group API
+
+## Convenções [/conventions]
+
+### Valores padrão
+
+### Headers padrão
+
+| Parâmetro  | Significado | Valores |
+| ------------- | ------------- | --- |
+| Accept | Indica para a API o formato que é esperado no retorno | application/json |
+| Content-Type | Indica qual é o formato que está sendo usado para enviar os dados | application/json |
+| Authorization | Token JWT usado para autenticação | Um token JWT ou vazio |
+
+
+## Retornos [/returns]
+
+### Tipos de retorno esperado
+
+| HTTP status code  | summary |
+| ------------- | ------------- |
+| 200 - OK | Everything worked as expected. |
+| 400 - Bad Request | The request was unacceptable, often due to missing a required parameter. |
+| 401 - Unauthorized | No valid API key provided. |
+| 402 - Request Failed | The parameters were valid but the request failed. |
+| 404 - Not Found | The requested resource doesn't exist. |
+| 500, 502, 503, 504  | Server Errors  Something went wrong server. |
+
+
+# Group Auth
+
+## Login [/auth]
+
+### Do login [POST]
+
++ Request Do login
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+    + Attributes
+        + email (string) - E-mail do usuário
+        + password (string) - Password
+
++ Response 200 (application/json)
+    + Attributes
+        + user_id (number) - Id do usuário
+        + token (string) - Token JWT do usuário
+        + refresh_token (string) - Refrech Token do usuário
+        + redirect_to: /v1/applicant - Próxima página após o login do usuário
+        + is_admin (boolean) - Is admin?
+        + company_id (number) - If isn't an admin an user must have a company
+
++ Response 401 (application/json)
+    + Attributes (Error)
+
+# Group User
+
+## User [/user]
+
+### List users [GET]
+
++ Request List users - JSON
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
++ Response 200 (application/json)
+    + Attributes (array[User])
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
++ Response 401 (application/json)
+    + Attributes (Error)
+
++ Request List users - HTML
+
+    + Headers
+
+            Accept: text/html
+            Content-Type: application/json
+            Authorization: JWT
+
++ Response 200 (text/html)
+
++ Response 404 (text/html)
+
++ Response 401 (text/html)
+
+### Create user [POST]
+
++ Request Create user
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
+    + Attributes (User)
+
++ Response 201 (application/json)
+    + Attributes (Created)
+
+
+## User [/user/{id}]
+
++ Parameters
+    + id: 1 (number, required) - User ID
+
+### Get user [GET]
+
++ Request Get user
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
++ Response 200 (application/json)
+    + Attributes (User)
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
+### Update user [PUT]
+
++ Request Update user
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
+    + Attributes (User)
+
++ Response 200 (application/json)
+    + Attributes (User)
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
+### Delet user [DELETE]
+
++ Request Delete user
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
++ Response 200 (application/json)
+    + Attributes (Created)
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
+
+# Group Company
+
+## Company [/company]
+
+### List companies [GET]
+
++ Request List companyies - JSON
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
++ Response 200 (application/json)
+    + Attributes (array[Company])
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
++ Response 401 (application/json)
+    + Attributes (Error)
+
++ Request List companies - HTML
+
+    + Headers
+
+            Accept: text/html
+            Content-Type: application/json
+            Authorization: JWT
+
++ Response 200 (text/html)
+
++ Response 404 (text/html)
+
++ Response 401 (text/html)
+
+### Create company [POST]
+
++ Request Create company
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
+    + Attributes (Company)
+
++ Response 201 (application/json)
+    + Attributes (Created)
+
+
+## Company [/company/{id}]
+
++ Parameters
+    + id: 1 (number, required) - Company ID
+
+### Get company [GET]
+
++ Request Get company
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
++ Response 200 (application/json)
+    + Attributes (Company)
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
+### Update company [PUT]
+
++ Request Update company
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
+    + Attributes (Company)
+
++ Response 200 (application/json)
+    + Attributes (Company)
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
+### Delet company [DELETE]
+
++ Request Delete company
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: JWT
+
++ Response 200 (application/json)
+    + Attributes (Created)
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
+# Data Structures
+
+## Error (object)
++ code: 400 (number) - Status code
++ message (string) - Mensagem do status
+
+## User (object)
++ id (number) - Id
++ nickname (string) - Profile
++ picture (string) -Picture
++ email (string) - E-mail
++ name (string) - Name
++ password (string) - Password
+
+## Company (object)
++ id (number) - Id
++ email (string) - E-mail
++ name (string) - Name
++ url (string) - Site
+
+## Created (object)
++ id (number) - id
