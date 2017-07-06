@@ -1,7 +1,6 @@
 package templates
 
 import (
-	"gitlab.com/thecodenation/thecodenation/errors"
 	"html/template"
 	"net/http"
 	"os"
