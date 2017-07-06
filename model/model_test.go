@@ -2,40 +2,30 @@ package model
 
 import (
 	valid "github.com/asaskevich/govalidator"
-	"gitlab.com/thecodenation/thecodenation/model"
+	"github.com/eminetto/go-web-skel/model"
 	"testing"
 )
 
-func TestApplicantValidation(t *testing.T) {
-	NewApplicant := model.Applicant{
-		Nickname:    "eminetto",
-		Picture:     "https://avatars0.githubusercontent.com/u/197939?:3",
-		Email:       "eminetto@gmail.com",
-		Name:        "Elton Minetto",
-		Phone:       "479918962345",
-		CurrentJob:  "Coderockr",
-		Course:      "Ciencia da Computação",
-		Semester:    "Primeiro",
-		DevYears:    "1 ano",
-		ResumeURL:   "file:///Users/eminetto/Documents/Projects/thecodenation/data/resume/eminetto/eminetto.pdf",
-		CoverLetter: "teste de teste",
-		Orientation: "Company Oriented - Family Oriented",
-		Aptitude:    "Data Science",
-		Linkedin:    "http://linkedin.com/eminetto",
-		LikeToWork:  "Abroad",
+func TestUserValidation(t *testing.T) {
+	u := model.User{
+		Picture:  "https://avatars0.githubusercontent.com/u/19712121939?:3",
+		Email:    "eminetto@email.com",
+		Name:     "Elton Minetto",
+		Password: "sfsdfdsdsf",
 	}
-	_, err := valid.ValidateStruct(NewApplicant)
+	_, err := valid.ValidateStruct(u)
 	if err != nil {
 		t.Errorf("expected %s result %s", nil, err)
 	}
 }
 
-func TestApplicantBatchValidation(t *testing.T) {
-	ApplicantBatch := model.ApplicantBatch{
-		Salary:  10000.50,
-		BatchID: 1,
+func TestCompanyValidation(t *testing.T) {
+	c := model.Company{
+		Email: "eminetto@email.com",
+		Name:  "Big Co",
+		URL:   "http://bigco.com",
 	}
-	_, err := valid.ValidateStruct(ApplicantBatch)
+	_, err := valid.ValidateStruct(c)
 	if err != nil {
 		t.Errorf("expected %s result %s", nil, err)
 	}
