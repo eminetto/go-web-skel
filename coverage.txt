@@ -1,0 +1,46 @@
+
+mode: atomic
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:16.37,22.2 3 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:24.52,26.16 2 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:29.2,29.26 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:26.16,28.3 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:32.49,35.16 3 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:38.2,38.15 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:35.16,37.3 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:41.60,44.16 3 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:47.2,47.15 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:44.16,46.3 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:50.52,51.15 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:59.2,60.16 2 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:63.2,63.18 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:51.15,54.17 3 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:57.3,57.19 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:54.17,56.4 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:60.16,62.3 1 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:66.42,69.16 3 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:72.2,73.12 2 0
+github.com/eminetto/go-web-skel/pkg/company/mysql.go:69.16,71.3 1 0
+mode: atomic
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:16.37,22.2 3 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:24.49,26.16 2 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:29.2,29.14 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:32.2,32.23 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:26.16,28.3 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:29.14,31.3 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:35.46,38.16 3 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:41.2,41.15 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:38.16,40.3 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:44.57,47.16 3 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:50.2,50.15 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:47.16,49.3 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:53.49,54.15 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:62.2,63.16 2 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:66.2,66.18 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:54.15,57.17 3 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:60.3,60.19 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:57.17,59.4 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:63.16,65.3 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:69.42,72.16 3 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:75.2,76.12 2 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:72.16,74.3 1 0
+github.com/eminetto/go-web-skel/pkg/user/mysql.go:79.51,84.2 4 0
