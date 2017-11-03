@@ -1,0 +1,5 @@
+production:
+    dialect: mysql
+    datasource: gowebskel:gowebskel@tcp(127.0.0.1:3306)/gowebskel?parseTime=true
+    dir: migrations
+    table: migrations

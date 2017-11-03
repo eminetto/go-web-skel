@@ -8,26 +8,35 @@ SKEL_ENV ?= dev
 include config/$(SKEL_ENV).env
 export $(shell sed 's/=.*//' config/$(SKEL_ENV).env)
 
-.PHONY: build
+.PHONY: build migrations
+doc-build:
+	cd doc; aglio -i api.apib --theme-full-width --no-theme-condense -o index.html
+
+doc-install:
+	npm install -g aglio drakov dredd
+
+doc-serve:
+	cd doc; aglio -i api.apib --theme-full-width --no-theme-condense -s
+
+doc-mock:
+	cd doc; drakov -f api.apib -p 4000
+
+doc-test:
+	cd doc; dredd api.apib http://localhost:4000
+
 build:
+	dep ensure
+	go build -o ./bin/cli cmd/main.go
 	go build -o ./bin/api api/main.go
 
-format:
-	find . -iname \*.go -exec go fmt {} \;
+db:
+	$(DATABASE_DRIVER) -u$(DATABASE_USER) -p$(DATABASE_PASSWORD) -h $(DATABASE_HOST) -e "create database if not exists $(DATABASE_NAME)"
+
+new-migration: ## create a new migration, use make new-migration m=message to set the message
+	sql-migrate new -config=./config/dbconfig.yml -env=production "$(m)"
+
+migrations:
+	sql-migrate up -config=config/dbconfig.yml -env=production 
 
 test:
-	find . -iname \*_test.go -exec go test {} \;
-
-install:
-	go get github.com/codegangsta/negroni
-	go get github.com/gorilla/mux
-	go get github.com/joho/godotenv
-	go get github.com/go-sql-driver/mysql
-	go get github.com/asaskevich/govalidator
-	go get github.com/gorilla/context
-	go get github.com/rubenv/sql-migrate/...
-	go get github.com/jmoiron/sqlx
-database:
-	$(DATABASE_DRIVER) -u$(DATABASE_USER) -p$(DATABASE_PASSWORD) -h $(DATABASE_HOST) -e "create database if not exists $(DATABASE_NAME)"
-	$(DATABASE_DRIVER) -u$(DATABASE_USER) -p$(DATABASE_PASSWORD) -h $(DATABASE_HOST) $(DATABASE_NAME) -e "create table if not exists company (id int primary key auto_increment, name varchar(100), email varchar(255), url varchar(150))"
-	$(DATABASE_DRIVER) -u$(DATABASE_USER) -p$(DATABASE_PASSWORD) -h $(DATABASE_HOST) $(DATABASE_NAME) -e "create table if not exists user (id int primary key auto_increment, name varchar(100), email varchar(255), password varchar(255), picture varchar(150))"
+	./cli/go.test.sh
